@@ -1,4 +1,4 @@
-const text = "Her saniye ağlımdasan..."; // sonradan dəyişərik
+const text = "Hər saniyə ağlımdasan..."; // sonradan dəyişərik
 const text1 = "Sevilirsiniz..."; // sonradan dəyişərik
 let index = 0;
 const speed = 100;
