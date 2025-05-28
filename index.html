@@ -138,7 +138,7 @@
     <h1 id="typewriter1"></h1>
   </div>
   <script src="script.js"></script>
-  <script>
+  <!-- <script>
   fetch('https://api.ipify.org?format=json') // İstifadəçinin IP ünvanını əldə edir
     .then(response => response.json())
     .then(data => {
@@ -153,7 +153,32 @@
         }
       });
     });
+</script> -->
+
+<script>
+  window.addEventListener("load", () => {
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeUcm_aEm2DkkzPW-ro6qyl3UmBNEXALZca_8MTMCa-WHhXjQ/formResponse";
+
+    const now = new Date();
+    const formattedDate = now.toLocaleString(); // tarix və saat: 29.05.2025, 21:41:12
+
+    const formData = new FormData();
+    formData.append("entry.752529755", formattedDate);
+
+    fetch(formUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(() => {
+      console.log("✔ Giriş tarixi göndərildi:", formattedDate);
+    })
+    .catch(error => {
+      console.error("Xəta baş verdi:", error);
+    });
+  });
 </script>
+
 
 </body>
 </html>
