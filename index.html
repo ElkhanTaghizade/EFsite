@@ -160,10 +160,26 @@
     const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeUcm_aEm2DkkzPW-ro6qyl3UmBNEXALZca_8MTMCa-WHhXjQ/formResponse";
 
     const now = new Date();
-    const formattedDate = now.toLocaleString(); // tarix və saat: 29.05.2025, 21:41:12
+    const formattedDate = now.toLocaleString(); // məsələn: 29.05.2025, 21:41:12
+
+    // Brauzer və platforma məlumatları
+    const userAgent = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const screenSize = `${window.screen.width}x${window.screen.height}`;
 
     const formData = new FormData();
+
+    // Giriş vaxtı
     formData.append("entry.752529755", formattedDate);
+
+    // İstifadəçi agenti
+    formData.append("entry.1014039948", userAgent);
+
+    // Platforma
+    formData.append("entry.1779164509", platform);
+
+    // Ekran ölçüsü
+    formData.append("entry.775461130", screenSize);
 
     fetch(formUrl, {
       method: "POST",
@@ -171,13 +187,18 @@
       body: formData
     })
     .then(() => {
-      console.log("✔ Giriş tarixi göndərildi:", formattedDate);
+      console.log("✔ Məlumatlar göndərildi:");
+      console.log("Giriş vaxtı:", formattedDate);
+      console.log("İstifadəçi agenti:", userAgent);
+      console.log("Platforma:", platform);
+      console.log("Ekran ölçüsü:", screenSize);
     })
     .catch(error => {
       console.error("Xəta baş verdi:", error);
     });
   });
 </script>
+
 
 
 </body>
